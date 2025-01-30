@@ -5,8 +5,8 @@ const router = express.Router()
 router.get("/tstMe", (req, res) => { 
     var r = /([a-z]+)+$/;
 
-    let match = r.test(req.params.id);
-    res.send(match)
+    let match = r.test(req.query.id || ""); // Vérifie l'entrée de manière sécurisée
+    res.json({ isValid: match }); // Réponse structuré
     
 });
 
